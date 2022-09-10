@@ -9,6 +9,7 @@ import { Box, Card, Stack, Container, Typography } from "@mui/material";
 import Page from "../ui-kit/components/Page";
 import Logo from "../ui-kit/components/Logo";
 import LoginForm from "../sections/auth/login/LoginForm";
+import RegisterForm from "../sections/auth/register/RegisterForm";
 
 const RootStyle = styled("div")(({ theme }) => ({
   [theme.breakpoints.up("md")]: {
@@ -21,7 +22,6 @@ const HeaderStyle = styled("header")(({ theme }) => ({
   zIndex: 9,
   lineHeight: 0,
   width: "100%",
-  maxWidth: "100%",
   display: "flex",
   alignItems: "center",
   position: "absolute",
@@ -57,7 +57,7 @@ const ContentStyle = styled("div")(({ theme }) => ({
   padding: theme.spacing(12, 0),
 }));
 
-export default function Login() {
+export default function Register() {
   //   const mdUp = useResponsive("up", "md");
 
   return (
@@ -69,10 +69,10 @@ export default function Login() {
         {/* {mdUp && ( */}
         <ContentStyle>
           <Typography variant="h3" sx={{ px: 5, mt: 10, mb: 5 }}>
-            Добро пожаловать!
+            Регистрация
           </Typography>
           <Box px={3}>
-            <img src="assets/img/AuthImg.svg" />
+            <img src="assets/img/RegisterImg.svg" />
             {/* <MainIllustration /> */}
           </Box>
         </ContentStyle>
@@ -81,16 +81,13 @@ export default function Login() {
           <ContentStyle>
             <Stack direction="row" alignItems="center" sx={{ mb: 5 }}>
               <Box sx={{ flexGrow: 1 }}>
-                <Typography variant="h4" gutterBottom>
-                  Вход в Админку
-                </Typography>
-                <Typography sx={{ color: "text.secondary" }}>
-                  Введите свои данные ниже.
+                <Typography variant="h5" gutterBottom>
+                  Начните абсолютно бесплатно
                 </Typography>
               </Box>
             </Stack>
 
-            <LoginForm />
+            <RegisterForm />
           </ContentStyle>
         </Container>
       </RootStyle>
