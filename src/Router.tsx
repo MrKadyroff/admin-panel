@@ -1,18 +1,23 @@
-import React from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
-import { DashboardLayout } from "./Layout";
-import Dashboard from "./pages/Dashboard";
-import Login from "./pages/Login";
+import { Navigate, Route, Routes, useRoutes } from "react-router-dom";
+import { Drawer } from "./components";
+import { Home, Login, Profile } from "./pages";
+import Register from "./pages/register";
 
 const Router = () => {
   return (
     <Routes>
       <Route path="/login" element={<Login />} />
-      <Route path="/" element={<DashboardLayout />}>
-        <Route index element={<Navigate to="/admin" replace />} />
-        <Route path="admin" element={<Dashboard />} />
+      <Route path="/register" element={<Register />} />
+      <Route path="/admin" element={<Drawer />}>
+        <Route path="/admin" element={<Home />} />
+        <Route path="app" element={<Home />} />
+        <Route path="profile" element={<Profile />} />
+        <Route path="*" element={<>Not found page</>} />
       </Route>
+      <Route path="/" element={<Navigate to="/admin/app" />} />
+      <Route path="*" element={<>Not found page</>} />
     </Routes>
   );
 };
+
 export default Router;
