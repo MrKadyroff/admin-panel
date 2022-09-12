@@ -7,6 +7,7 @@ const Router = () => {
 
   return (
     <Routes>
+      <Route path="/" element={<Navigate to="/admin/app" />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/admin" element={<Drawer />}>
@@ -15,7 +16,6 @@ const Router = () => {
         <Route path="profile" element={<Profile />} />
         <Route path="*" element={<>Not found page</>} />
       </Route>
-      <Route path="/" element={<Navigate to="/admin/app" />} />
       <Route path="*" element={<>Not found page</>} />
     </Routes>
   );

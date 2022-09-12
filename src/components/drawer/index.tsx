@@ -2,19 +2,19 @@ import { makeStyles } from "@material-ui/core/styles";
 import {
     Drawer as MUIDrawer,
     ListItem,
-    List,
     ListItemIcon,
     ListItemText,
     Grid,
-    Box
 } from "@material-ui/core";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet, useNavigate, Link as RouterLink } from "react-router-dom";
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import AppBar from "@material-ui/core/AppBar";
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { Box, Typography, Avatar, Link, List, ListSubheader, ListItemButton } from '@mui/material';
+import { styled } from '@mui/material/styles';
 
-const drawerWidth = 240;
+const drawerWidth = 280;
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -62,6 +62,9 @@ const useStyles = makeStyles(theme => ({
     iconAccount: {
         margin: "38px 24px",
         color: "#212B36"
+    },
+    itemList: {
+
     }
 }));
 
@@ -95,12 +98,33 @@ export function Drawer() {
         </AppBar>
         <MUIDrawer variant="persistent" anchor="left" open className={classes.drawer} classes={{ paper: classes.drawerPaper }}>
             <img alt="Logo umitstore" className={classes.imgLogo} src="/icons/logo-umitstore.svg" />,
-            <List>
+            <Box sx={{ mb: 2, mx: 2.5, }}>
+                <Link underline="none" component={RouterLink} to="#">
+                    <Grid style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        padding: "16px 20px",
+                        borderRadius: "12px",
+                        background: "rgba(145, 158, 171, 0.08)",
+                    }}>
+                        <Avatar src="/icons/avatar.jpg" alt="photoURL" />
+                        <Box sx={{ ml: 2 }}>
+                            <Typography variant="subtitle2" sx={{ color: 'text.primary' }}>
+                                Carlota Monteiro
+                            </Typography>
+                            <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                                Admin
+                            </Typography>
+                        </Box>
+                    </Grid>
+                </Link>
+            </Box>
+            <List disablePadding sx={{ p: 2 }} subheader={<ListSubheader style={{ color: "#212B36", fontWeight: 700, fontSize: "13px", }}>GENERAL</ListSubheader>}>
                 {itemsList.map((item, index) => {
                     const { text, icon, onClick } = item;
                     return (
                         <ListItem button key={text} onClick={onClick}>
-                            {icon && <ListItemIcon>{icon}</ListItemIcon>}
+                            {icon && <ListItemIcon >{icon}</ListItemIcon>}
                             <ListItemText primary={text} />
                         </ListItem>
                     )
