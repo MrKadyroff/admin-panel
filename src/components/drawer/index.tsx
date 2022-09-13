@@ -11,14 +11,11 @@ import {
 } from "@material-ui/core";
 import { Outlet, useNavigate } from "react-router-dom";
 import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
-import AppBar from "@material-ui/core/AppBar/AppBar";
+import AppBar from "@material-ui/core/AppBar";
 import SearchIcon from "@mui/icons-material/Search";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import NotificationsIcon from "@mui/icons-material/Notifications";
-import LanguageIcon from "@mui/icons-material/Language";
-import { Badge } from "@mui/material";
 
-const drawerWidth = 240;
+const drawerWidth = 280;
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -62,13 +59,12 @@ const useStyles = makeStyles((theme: Theme) => ({
     height: "50px",
     margin: "24px 20px",
   },
-  icon: {
+  iconSearch: {
     margin: "38px 50px",
     color: "#212B36",
   },
   iconAccount: {
-    // margin: "38px 24px",
-    marginLeft: 50,
+    margin: "38px 24px",
     color: "#212B36",
   },
 }));
@@ -93,25 +89,17 @@ export function Drawer() {
   return (
     <div className={classes.root}>
       <AppBar elevation={0} position="fixed" className={classes.appBar}>
-        <Grid container justifyContent="space-between">
-          <Grid item>
-            <SearchIcon className={classes.icon} />
+        <Grid
+          container
+          direction="row"
+          alignItems="baseline"
+          justifyContent="flex-end"
+        >
+          <Grid item xs={2}>
+            <SearchIcon className={classes.iconSearch} />
           </Grid>
-          <Grid item justifyContent="space-between">
-            <Grid container justifyContent="flex-end">
-              <Grid item>
-                <LanguageIcon className={classes.icon} />
-              </Grid>
-              <Grid item>
-                <NotificationsIcon className={classes.icon} />
-              </Grid>
-              <Grid item className={classes.icon}>
-                2 400 000 т
-              </Grid>
-              <Grid item>
-                <SearchIcon className={classes.icon} />
-              </Grid>
-            </Grid>
+          <Grid item xs={10} justifyContent="flex-end">
+            <AccountCircleIcon className={classes.iconAccount} />
           </Grid>
         </Grid>
       </AppBar>
