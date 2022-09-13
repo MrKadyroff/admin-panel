@@ -49,7 +49,12 @@ export default function Register() {
           <Logo />
           <Typography variant="subtitle1">
             Уже есть аккаутн?
-            <span onClick={() => navigate("/login")}>Войти</span>
+            <span
+              onClick={() => navigate("/login")}
+              style={{ color: "#00AB55", cursor: "pointer" }}
+            >
+              Войти
+            </span>
           </Typography>
         </HeaderStyle>
         <ContentStyle>

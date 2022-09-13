@@ -49,7 +49,10 @@ export function Login() {
           <Logo />
           <Typography variant="subtitle1">
             У вас еще нет аккаунта ?{" "}
-            <span onClick={() => navigate("/register")}>
+            <span
+              onClick={() => navigate("/register")}
+              style={{ color: "#00AB55", cursor: "pointer" }}
+            >
               Зарегистрироваться
             </span>
           </Typography>

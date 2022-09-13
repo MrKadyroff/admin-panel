@@ -145,10 +145,24 @@ export default function RegisterForm() {
             Регистрация
           </LoadingButton>
 
+          <FormControlLabel
+            control={
+              <Checkbox
+                checked={remember}
+                style={{ color: "green" }}
+                onChange={() => setRemember(!remember)}
+              />
+            }
+            label="прочитал условия и согласен с "
+          />
+
           <Typography align="center" style={{ marginTop: 10 }}>
-            прочитал условия и согласен с{" "}
             <span
-              style={{ textDecoration: "underline", cursor: "pointer" }}
+              style={{
+                color: "#00AB55",
+                textDecoration: "underline",
+                cursor: "pointer",
+              }}
               onClick={() => setOffert(!offert)}
             >
               Договором оферты.
