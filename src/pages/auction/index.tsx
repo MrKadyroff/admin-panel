@@ -1,7 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 
-export function Profile() {
+export function CreateAuction() {
 
-  return <p>Profile Page</p>;
+  return <p>Create an auction Page</p>;
 }

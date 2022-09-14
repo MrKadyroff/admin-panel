@@ -1,18 +1,20 @@
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, withStyles } from "@material-ui/core/styles";
 import {
     Drawer as MUIDrawer,
-    ListItem,
-    ListItemIcon,
-    ListItemText,
     Grid,
 } from "@material-ui/core";
+import {
+    ListItemIcon,
+    ListItemText
+} from "@mui/material";
+import MuiListItem from "@material-ui/core/ListItem";
 import { Outlet, useNavigate, Link as RouterLink } from "react-router-dom";
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import AppBar from "@material-ui/core/AppBar";
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import { Box, Typography, Avatar, Link, List, ListSubheader, ListItemButton } from '@mui/material';
-import { styled } from '@mui/material/styles';
+import { Box, Typography, Avatar, Link, List, ListSubheader } from '@mui/material';
+import { useState } from "react";
 
 const drawerWidth = 280;
 
@@ -43,7 +45,6 @@ const useStyles = makeStyles(theme => ({
         marginLeft: drawerWidth,
         backgroundColor: "#FFFFFF"
     },
-
     toolbar: theme.mixins.toolbar,
     content: {
         flexGrow: 1,
@@ -62,26 +63,53 @@ const useStyles = makeStyles(theme => ({
     iconAccount: {
         margin: "38px 24px",
         color: "#212B36"
-    },
-    itemList: {
-
     }
 }));
+
+const ListItem = withStyles({
+    root: {
+        borderRadius: "8px",
+        margin: "2px",
+        "&$selected": {
+            backgroundColor: "rgba(0, 171, 85, 0.08)",
+            color: "#00AB55",
+            "& .MuiListItemIcon-root": {
+                color: "#00AB55"
+            },
+        },
+        "&$selected:hover": {
+            backgroundColor: "rgba(0, 171, 85, 0.08)",
+            color: "#00AB55",
+            "& .MuiListItemIcon-root": {
+                color: "#00AB55"
+            },
+        },
+        "&:hover": {
+            backgroundColor: "rgba(0, 171, 85, 0.08)",
+            color: "#00AB55",
+            "& .MuiListItemIcon-root": {
+                color: "#00AB55",
+            },
+        }
+    },
+    selected: {}
+})(MuiListItem);
 
 export function Drawer() {
     const navigate = useNavigate();
     const classes = useStyles();
+    const [selectedIndex, setSelectedIndex] = useState(0);
 
     const itemsList = [
         {
             text: "Главная",
-            icon: <AccountBalanceIcon />,
-            onClick: () => navigate('/admin/app')
+            icon: <img src="/icons/home.svg" alt="home img" />,
+            onClick(index: number) { navigate('/admin/app'); setSelectedIndex(index) }
         },
         {
-            text: "Профиль",
-            icon: <AccountBalanceIcon />,
-            onClick: () => navigate('/admin/profile')
+            text: "Создать аукцион",
+            icon: <img src="/icons/create-an-auction.svg" alt="create an auction" />,
+            onClick(index: number) { navigate('/admin/auction'); setSelectedIndex(index) }
         }
     ];
 
@@ -107,7 +135,7 @@ export function Drawer() {
                         borderRadius: "12px",
                         background: "rgba(145, 158, 171, 0.08)",
                     }}>
-                        <Avatar src="/icons/avatar.jpg" alt="photoURL" />
+                        <Avatar src="/icons/avatar.svg" alt="photoURL" />
                         <Box sx={{ ml: 2 }}>
                             <Typography variant="subtitle2" sx={{ color: 'text.primary' }}>
                                 Carlota Monteiro
@@ -119,13 +147,20 @@ export function Drawer() {
                     </Grid>
                 </Link>
             </Box>
-            <List disablePadding sx={{ p: 2 }} subheader={<ListSubheader style={{ color: "#212B36", fontWeight: 700, fontSize: "13px", }}>GENERAL</ListSubheader>}>
+            <List disablePadding sx={{ p: 2, width: "242px", height: "48px" }} subheader={<ListSubheader style={{ color: "#212B36", fontWeight: 700, fontSize: "13px", }}>GENERAL</ListSubheader>}>
                 {itemsList.map((item, index) => {
                     const { text, icon, onClick } = item;
                     return (
-                        <ListItem button key={text} onClick={onClick}>
+                        <ListItem button key={text} onClick={() => { return onClick(index); }} selected={selectedIndex === index}>
                             {icon && <ListItemIcon >{icon}</ListItemIcon>}
-                            <ListItemText primary={text} />
+                            <ListItemText primary={text} primaryTypographyProps={{
+                                fontFamily: "Public Sans",
+                                fontStyle: "normal",
+                                fontWeight: selectedIndex === index ? 600 : 400,
+                                fontSize: "14px",
+                                lineHeight: "22px",
+                                color: selectedIndex === index ? "#00AB55" : "#637381",
+                            }} />
                         </ListItem>
                     )
                 })}

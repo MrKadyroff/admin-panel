@@ -1,6 +1,6 @@
 import { Navigate, Route, Routes, useRoutes } from "react-router-dom";
 import { Drawer } from "./components";
-import { Home, Login, Profile } from "./pages";
+import { Home, Login, CreateAuction } from "./pages";
 import Register from "./pages/registr";
 
 const Router = () => {
@@ -13,7 +13,7 @@ const Router = () => {
       <Route path="/admin" element={<Drawer />}>
         <Route path="/admin" element={<Home />} />
         <Route path="app" element={<Home />} />
-        <Route path="profile" element={<Profile />} />
+        <Route path="auction" element={<CreateAuction />} />
         <Route path="*" element={<>Not found page</>} />
       </Route>
       <Route path="*" element={<>Not found page</>} />

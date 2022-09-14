@@ -1,3 +1,3 @@
 export { Login } from './login';
 export { Home } from './home';
-export { Profile } from './profile';
+export { CreateAuction } from './auction';
