@@ -30,6 +30,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     minHeight: "100%",
     paddingTop: 80,
     margin: 20,
+    maxWidth: "calc(100% - 20px)",
   },
   drawer: {
     width: drawerWidth,
