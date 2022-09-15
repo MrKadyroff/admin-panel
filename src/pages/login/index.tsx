@@ -2,6 +2,7 @@ import { styled } from "@mui/material/styles";
 import { Box, Stack, Container, Typography } from "@mui/material";
 import { Logo, Page } from "../../components";
 import LoginForm from "../../sections/login/LoginForm";
+import { useNavigate } from "react-router-dom";
 
 const RootStyle = styled("div")(({ theme }) => ({
   [theme.breakpoints.up("md")]: {
@@ -14,7 +15,7 @@ const HeaderStyle = styled("header")(({ theme }) => ({
   zIndex: 9,
   lineHeight: 0,
   width: "100%",
-  maxWidth: "100%",
+  maxWidth: `calc(100% - 200px)`,
   display: "flex",
   alignItems: "center",
   position: "absolute",
@@ -39,12 +40,22 @@ const ContentStyle = styled("div")(({ theme }) => ({
 }));
 
 export function Login() {
+  const navigate = useNavigate();
 
   return (
     <Page title="Вход">
       <RootStyle>
         <HeaderStyle>
           <Logo />
+          <Typography variant="subtitle1">
+            У вас еще нет аккаунта ?{" "}
+            <span
+              onClick={() => navigate("/register")}
+              style={{ color: "#00AB55", cursor: "pointer" }}
+            >
+              Зарегистрироваться
+            </span>
+          </Typography>
         </HeaderStyle>
         <ContentStyle>
           <Typography variant="h3" sx={{ px: 5, mt: 10, mb: 5 }}>

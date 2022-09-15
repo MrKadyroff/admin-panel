@@ -1,6 +1,7 @@
 import { styled } from "@mui/material/styles";
 import { Box, Stack, Container, Typography } from "@mui/material";
 import { Logo, Page } from "../../components";
+import { useNavigate } from "react-router-dom";
 import RegisterForm from "../../sections/register/RegisterForm";
 
 const RootStyle = styled("div")(({ theme }) => ({
@@ -13,6 +14,7 @@ const HeaderStyle = styled("header")(({ theme }) => ({
     top: 0,
     zIndex: 9,
     lineHeight: 0,
+    maxWidth: `calc(100% - 200px)`,
     width: "100%",
     display: "flex",
     alignItems: "center",
@@ -38,12 +40,22 @@ const ContentStyle = styled("div")(({ theme }) => ({
 }));
 
 export default function Register() {
+    const navigate = useNavigate();
 
     return (
         <Page title="Вход">
             <RootStyle>
                 <HeaderStyle>
                     <Logo />
+                    <Typography variant="subtitle1">
+                        Уже есть аккаутн?
+                        <span
+                            onClick={() => navigate("/login")}
+                            style={{ color: "#00AB55", cursor: "pointer" }}
+                        >
+                            Войти
+                        </span>
+                    </Typography>
                 </HeaderStyle>
                 <ContentStyle>
                     <Typography variant="h3" sx={{ px: 5, mt: 10, mb: 5 }}>
