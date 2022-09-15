@@ -9,10 +9,20 @@ import { makeStyles } from "@material-ui/core";
 const useStyles = makeStyles((theme: Theme) => ({
   welcomeBanner: {
     height: 260,
+    maxHeight: 260,
     padding: 10,
     borderRadius: 16,
     background: " #C8FACD",
     width: "calc(100% /3 - 40px)",
+  },
+  welcomeSlider: {
+    maxWidth: "calc(100% /3 - 40px)",
+    borderRadius: 16,
+    boxShadow:
+      " 0px 0px 2px rgba(145, 158, 171, 0.2), 0px 12px 24px -4px rgba(145, 158, 171, 0.12);",
+    maxHeight: 260,
+    height: 260,
+    marginBottom: 50,
   },
   welcomeText: {
     padding: "38px 40px",
@@ -78,33 +88,9 @@ export function Home() {
             </Grid>
           </Grid>
         </Grid>
-        <Grid item xs={4}>
+        <Grid item xs={4} className={classes.welcomeSlider}>
           <Grid container justifyContent="space-between">
-            <Grid item xs={6}>
-              <Grid
-                container
-                direction="column"
-                className={classes.welcomeText}
-              >
-                <Grid item>
-                  <Typography variant="h5">
-                    Welcome back Fabiana Capmany !
-                  </Typography>
-                </Grid>
-                <Grid item>
-                  <Typography variant="caption">
-                    Welcome back Fabiana Capmany !
-                  </Typography>
-                </Grid>
-                <Grid item>
-                  <Button variant="contained" color="primary">
-                    Go now
-                  </Button>
-                </Grid>
-                ``
-              </Grid>
-            </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={12}>
               <img
                 src="../../../../img/welcomeBox.svg"
                 className={classes.welcomeImg}
@@ -179,6 +165,44 @@ export function Home() {
               />
             </Grid>
           </Grid>
+        </Grid>
+      </Grid>
+      <Grid container justifyContent="space-between">
+        <Grid item xs={4} className={classes.welcomeSlider}>
+          <Grid item xs={12}>
+            <Typography fontWeight={600} color="black">
+              Участники аукционов
+            </Typography>
+            <img
+              src="../../../../img/welcomeBox.svg"
+              className={classes.welcomeImg}
+            />
+          </Grid>
+          <Grid container justifyContent="space-between">
+            <Grid item xs={4}>
+              {" "}
+              <Typography fontWeight={600} color="black">
+                Участники аукционов
+              </Typography>
+            </Grid>
+            <Grid item xs={4}>
+              {" "}
+              <Typography fontWeight={600} color="black">
+                Участники аукционов
+              </Typography>
+            </Grid>
+            <Grid item xs={4}>
+              {" "}
+              <Typography fontWeight={600} color="black">
+                Участники аукционов
+              </Typography>
+            </Grid>
+          </Grid>
+        </Grid>
+        <Grid item xs={8}>
+          <Typography fontWeight={600} color="black">
+            Участники аукционов
+          </Typography>
         </Grid>
       </Grid>
     </Page>
